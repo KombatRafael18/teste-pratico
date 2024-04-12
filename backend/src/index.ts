@@ -11,13 +11,29 @@ app.use(express.json());
 app.use(cors());
 app.use(bodyParser.json())
 
-app.post('/calcular',(req: Request, res: Response) =>{
+export let dogP: number = null
+export let dogG: number = null
+export let Data: number = null
+
+app.post('/calcular',async (req: Request, res: Response) =>{
   const {dogPequeno, dogGrande, date} = req.body
+  dogP = dogPequeno;
+  dogG = dogGrande;
+  Data = date;
+
+
+  try {
+    await Petshop(req, res);
+  } catch (e: any) {
+    res.send(e.message);
+  }
+
 });
 
 app.get("/calcular", async (req: Request, res: Response) => {
   try {
     await Petshop(req, res)
+
   } catch (e: any) {
     res.send(e.message);
   }

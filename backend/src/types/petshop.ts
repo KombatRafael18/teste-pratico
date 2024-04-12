@@ -1,13 +1,18 @@
 import { Request, Response } from "express";
+import { dogP, dogG, Data } from'./../index';
+
 
 async function Petshop(req: Request, res: Response): Promise<void> {
-  const dogPequeno: number = 4;
-  const dogGrande: number = 10;
-  const diaDaSemana: number = 2;
+  const dogPequeno: number = dogP;
+  const dogGrande: number = dogG;
+  const data: number = Data;
+  const dia = new Date(data);
+  const diaDaSemana = dia.getDay();
+  const ehFinalDeSemana = diaDaSemana === 5 || diaDaSemana === 6;
 
   const meuCaninoFeliz = (): number => {
       let MCF: number;
-      if (diaDaSemana === 1) {
+      if (ehFinalDeSemana) {
           MCF = (20 * dogPequeno) + (40 * dogGrande);
       } else {
           MCF = ((20 * dogPequeno) + (40 * dogGrande)) * 1.2;
@@ -17,7 +22,7 @@ async function Petshop(req: Request, res: Response): Promise<void> {
 
   const vaiRex = (): number => {
       let VR: number;
-      if (diaDaSemana === 1) {
+      if (ehFinalDeSemana) {
           VR = (15 * dogPequeno) + (50 * dogGrande);
       } else {
           VR = (20 * dogPequeno) + (55 * dogGrande);
@@ -30,6 +35,8 @@ async function Petshop(req: Request, res: Response): Promise<void> {
   };
 
   const comparacao = (): string => {
+    console.log(dogPequeno, dogGrande, data)
+
       const MCF: number = meuCaninoFeliz();
       const VR: number = vaiRex();
       const CC: number = chowChawgas();

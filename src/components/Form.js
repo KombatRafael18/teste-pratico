@@ -17,14 +17,6 @@ function Form() {
         console.log(`Usuário cadastrou a data ${date} com ${dogPequeno} cachorros pequenos e ${dogGrande} cachorros grandes`)
         
         
-        api.get('calcular').then(res => {
-            if('res.data.mensage') {
-            setMensagem(res.data);
-            setShowPopup(true);
-            } else{
-                console.error('Erro ao obter a mensagem da API.');
-            }
-        })
 
         try {
             const response = await axios.post('http://localhost:5000/calcular', {
@@ -36,6 +28,11 @@ function Form() {
         } catch (error) {
             console.error('Erro ao enviar dados para o servidor:', error);
         }
+
+        api.get('calcular').then(res => {
+            setMensagem(res.data);
+            setShowPopup(true);
+        })
     }
 
 
