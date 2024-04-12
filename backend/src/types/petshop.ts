@@ -12,7 +12,7 @@ async function Petshop(req: Request, res: Response): Promise<void> {
 
   const meuCaninoFeliz = (): number => {
       let MCF: number;
-      if (ehFinalDeSemana) {
+      if (!ehFinalDeSemana) {
           MCF = (20 * dogPequeno) + (40 * dogGrande);
       } else {
           MCF = ((20 * dogPequeno) + (40 * dogGrande)) * 1.2;
@@ -22,7 +22,7 @@ async function Petshop(req: Request, res: Response): Promise<void> {
 
   const vaiRex = (): number => {
       let VR: number;
-      if (ehFinalDeSemana) {
+      if (!ehFinalDeSemana) {
           VR = (15 * dogPequeno) + (50 * dogGrande);
       } else {
           VR = (20 * dogPequeno) + (55 * dogGrande);
@@ -35,7 +35,6 @@ async function Petshop(req: Request, res: Response): Promise<void> {
   };
 
   const comparacao = (): string => {
-    console.log(dogPequeno, dogGrande, data)
 
       const MCF: number = meuCaninoFeliz();
       const VR: number = vaiRex();

@@ -15,10 +15,34 @@
     padding: 20px;
     border-radius: 20px;
     box-shadow: 0 13px 5px rgba(0, 0, 0, 0.2);
+    align-items: center;
+    font-size: 20px;
+    margin-bottom: 120px;
   }
   
   .popup button {
     background-color: rgb(112, 0, 0);
     margin-top: 10px;
+    margin-top: 20px;
+  }
+
+  .submitButton { 
+    color: white; 
+    padding: 5px 16px; 
+    border: none; 
+    border-radius: 15px; 
+    cursor: pointer;
+    font-size: 18px;
+    font-weight: bold;
+
+  }
+
+  .submitButton:hover {
+    background-color: #5c0000;
   }
   
+  .texte{
+
+    color: rgb(219, 219, 219);
+    font-weight: bold;
+  }
